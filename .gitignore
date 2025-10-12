@@ -1,0 +1,112 @@
+# Environment variables
+
+.env.local
+.env.production
+.env.staging
+
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.coverage
+.tox/
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.log
+.pytest_cache/
+
+# Django
+
+
+
+# Media files (if containing user uploads with sensitive data)
+
+# Uncomment the line below if you want to track media files
+# !media/.gitkeep
+
+# Static files
+
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# IDE/Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Cache
+.cache/
+.sass-cache/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Backup files
+*.bak
+*.backup
+
+# Security & Secrets
+*.key
+*.pem
+*.p12
+*.crt
+*.cer
+secrets.json
+
+# Documentation build
+docs/_build/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Celery beat schedule file
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.venv
+
+venv/
+ENV/
+env.bak/
+venv.bak/
