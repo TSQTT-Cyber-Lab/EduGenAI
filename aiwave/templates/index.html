@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% include './partials/head.html' %}
+
+<body>
+    <main class="page-wrapper">
+    
+        <!-- Start Header Area  -->
+        <header class="rainbow-header header-default header-transparent header-sticky">
+            <div class="container position-relative">
+                <div class="row align-items-center row--0">
+                    <div class="col-lg-2 col-md-6 col-6">
+                        <div class="logo">
+                            <a href="/">
+                                <img class="logo-light" src="{{ meta_vars.site_logo }}" alt="ChatBot Logo">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 d-none d-lg-block">
+                        <nav class="mainmenu-nav d-none d-lg-flex justify-content-center">
+                            {% include './partials/mainMenuItem.html' %}
+                        </nav>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-6 position-static">
+                        <div class="header-right">
+
+                            <!-- Start Header Btn  -->
+                             {% if user.is_authenticated %}
+                            <div class="header-btn">
+                                <form method="POST" action="{% url 'aiwave-logout' %}" style="margin: 0;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="rainbow-gradient-btn" style="background: none; border: none;">
+                                        <span>Đăng xuất</span>
+                                    </button>
+                                </form>
+                            </div>
+                            {% else %}
+                            <div class="header-btn">
+                                <a class="rainbow-gradient-btn" target="_self" href="{% url 'aiwave-signin' %}"><span>Đăng nhập</span></a>
+                            </div>
+                            {% endif %}
+                            <!-- End Header Btn  -->
+
+                            <!-- Start Mobile-Menu-Bar -->
+                            <div class="mobile-menu-bar ml--5 d-flex justify-content-end d-lg-none">
+                                <div class="hamberger">
+                                    <button class="hamberger-button">
+                                        <i class="fa-sharp fa-regular fa-bars"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Start Mobile-Menu-Bar -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- End Header Area  -->
+        <div class="popup-mobile-menu">
+            <div class="inner-popup">
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="/">
+                            <img class="logo-light" src="{% static 'images/logo/logo.png' %}" alt="ChatBot Logo">
+                        </a>
+                    </div>
+                    <div class="close-menu">
+                        <button class="close-button">
+                            <i class="fa-sharp fa-regular fa-x"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="content">
+                    {% include './partials/mainMenuItem.html' %}
+
+                    <div class="rbt-sm-separator"></div>
+                    {% include './partials/navbarLinks.html' %}
+                </div>
+
+                <!-- Start Header Btn  -->
+                <div class="header-btn d-block d-md-none">
+                    <a class="btn-default @@btnClass" target="_blank" href="{% url 'aiwave-text-generator' %}">Get Started Free</a>
+                </div>
+                <!-- End Header Btn  -->
+            </div>
+        </div>
+
+        <!-- Imroz Preloader -->
+        {% include './partials/preloader.html' %}
+
+        <!-- Start Slider Area  -->
+        <div class="slider-area slider-style-1 variation-default slider-bg-image bg-banner1 slider-bg-shape" data-black-overlay="1">
+            <!-- <div class="bg-blend-top bg_dot-mask"></div> -->
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="inner text-center mt--140">
+                            <h1 class="title display-one">Đánh giá trắc nghiệm
+                                <br> <span class="header-caption">
+                                    <span class="cd-headline rotate-1">
+                                        <span class="cd-words-wrapper" style="width: 400px;">
+                                            <b class="theme-gradient is-visible">Ngữ Văn</b>
+                                            <b class="theme-gradient is-hidden">Tiếng Anh</b>
+                                            <b class="theme-gradient is-hidden">Lịch Sử</b>
+                                            <b class="theme-gradient is-hidden">Nhận thức</b>
+                                        </span>
+                                </span>
+                                </span><label style="padding-left: 10px;">với EduGenAI</label>
+                            </h1>
+                            <p class="description">Giải phóng tiềm năng AI của EduGenAI.<br> Sử dụng ứng dụng tạo đề ôn tập bằng AI</p>
+                            <div class="form-group">
+                                <form method="get" action="{% url 'aiwave-text-generator' %}" id="indexPromptForm">
+                                    {% csrf_token %}
+                                    <textarea disabled name="prompt" id="slider-text-area" cols="30" rows="2" placeholder="Luyện thi NĂNG LỰC với bộ đề chất lượng cao dành cho học sinh THPT trên toàn quốc"></textarea>
+                                    <button type="submit" class="btn-default @@btnClass">Bắt đầu ngay</button>
+                                </form>
+                            </div>
+                            <div class="inner-shape">
+                                <img src="{% static 'images/bg/icon-shape/icon-shape-one.png' %}" alt="Icon Shape" class="iconshape iconshape-one">
+                                <img src="{% static 'images/bg/icon-shape/icon-shape-two.png' %}" alt="Icon Shape" class="iconshape iconshape-two">
+                                <img src="{% static 'images/bg/icon-shape/icon-shape-three.png' %}" alt="Icon Shape" class="iconshape iconshape-three">
+                                <img src="{% static 'images/bg/icon-shape/icon-shape-four.png' %}" alt="Icon Shape" class="iconshape iconshape-four">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-11 col-xl-11 justify-content-center">
+                        <div class="slider-frame" style="display: flex; flex-direction: row; justify-content: center;">
+                            <img class="slider-image-effect" src="{% static 'images/bg/slider-main-image.png' %}" alt="Banner Images">
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="bg-shape">
+                <img class="bg-shape-one" src="{% static 'images/bg/bg-shape-four.png' %}" alt="Bg Shape">
+                <img class="bg-shape-two" src="{% static 'images/bg/bg-shape-five.png' %}" alt="Bg Shape">
+            </div>
+        </div>
+        <!-- End Slider Area  -->
+
+
+        <!-- Start Tab__Style--one Area  -->
+        <div class="rainbow-service-area rainbow-section-gap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center pb--60" data-sal="slide-up" data-sal-duration="700" data-sal-delay="100">
+                            <h4 class="subtitle">
+                                <span class="theme-gradient">EduGenAI KHAI PHÓNG TIỀM NĂNG AI</span>
+                            </h4>
+                            <h2 class="title mb--0">Tạo đề bằng AI dành cho <br> học sinh THPT</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row--30 align-items-center">
+                    <div class="col-lg-12">
+                        <div class="rainbow-default-tab style-three generator-tab-defalt">
+                            <ul class="nav nav-tabs tab-button" role="tablist">
+                                <li class="nav-item tabs__tab" role="presentation">
+                                    <button class="nav-link rainbow-gradient-btn without-shape-circle active" id="video-generator-tab" data-bs-toggle="tab" data-bs-target="#video-generate" type="button" role="tab" aria-controls="video-generate" aria-selected="true"><span class="generator-icon"><img src="{% static 'images/icons/video-g.png' %}" alt="Video Generator Icon">Ngữ Văn</span><span class="border-bottom-style"></span></button>
+                                </li>
+                                <li class="nav-item tabs__tab" role="presentation">
+                                    <button class="nav-link rainbow-gradient-btn without-shape-circle" id="audio-generator-tab" data-bs-toggle="tab" data-bs-target="#audio-generate" type="button" role="tab" aria-controls="audio-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/audio-g.png' %}" alt="Video Generator Icon">Lịch Sử</span><span class="border-bottom-style"></span></button>
+                                </li>
+                                <li class="nav-item tabs__tab" role="presentation">
+                                    <button class="nav-link rainbow-gradient-btn without-shape-circle" id="photo-generator-tab" data-bs-toggle="tab" data-bs-target="#photo-generate" type="button" role="tab" aria-controls="photo-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/photo-g.png' %}" alt="Video Generator Icon">Anh Văn</span><span class="border-bottom-style"></span></button>
+                                </li>
+                                 <li class="nav-item tabs__tab" role="presentation">
+                                    <button class="nav-link rainbow-gradient-btn without-shape-circle" id="text-generator-tab" data-bs-toggle="tab" data-bs-target="#text-generate" type="button" role="tab" aria-controls="text-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/text-g.png' %}" alt="Video Generator Icon">Nhận thức</span><span class="border-bottom-style"></span></button>
+                                </li>
+                                <!--<li class="nav-item tabs__tab " role="presentation">
+                                    <button class="nav-link rainbow-gradient-btn without-shape-circle" id="code-generator-tab" data-bs-toggle="tab" data-bs-target="#code-generate" type="button" role="tab" aria-controls="code-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/code-g.png' %}" alt="Video Generator Icon">Code Generator</span><span class="border-bottom-style"></span></button>
+                                </li> -->
+                            </ul>
+
+                            <div class="rainbow-tab-content tab-content">
+                                <div class="tab-pane fade show active" id="video-generate" role="tabpanel" aria-labelledby="video-generator-tab">
+                                    <div class="inner">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="section-title">
+                                                    <h2 class="title">Tạo đề thi Ngữ Văn bằng AI</h2>
+                                                    <div class="features-section">
+                                                        <ul class="list-style--1">
+                                                            <li><i class="fa-regular fa-circle-check"></i>Đa dạng và phong phú</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tùy chỉnh theo năng lực</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tiếp cận đa dạng văn bản</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Cơ chế chấm điểm tự động</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt_md--30 mt_sm--30">
+                                                <div class="export-img">
+                                                    <div class="inner-without-padding">
+                                                        <div class="export-img img-bg-shape" style="text-align: center;">
+                                                            <img src="{% static 'images/generator-img/chat-export-vedio.png' %}" alt="Chat example Image">
+                                                            <div class="image-shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="audio-generate" role="tabpanel" aria-labelledby="audio-generator-tab">
+                                    <div class="inner">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="section-title">
+                                                    <h2 class="title">Tạo đề thi Lịch Sử bằng AI</h2>
+                                                    <div class="features-section">
+                                                        <ul class="list-style--1">
+                                                            <li><i class="fa-regular fa-circle-check"></i>Đa dạng và phong phú</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tùy chỉnh theo năng lực</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tiếp cận nhiều chủ đề</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Cơ chế chấm điểm tự động</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt_md--30 mt_sm--30">
+                                                <div class="export-img">
+                                                    <div class="inner-without-padding">
+                                                        <div class="export-img img-bg-shape" style="text-align: center;">
+                                                            <img src="{% static 'images/generator-img/chat-export-audio.png' %}" alt="Chat example Image">
+                                                            <div class="image-shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="photo-generate" role="tabpanel" aria-labelledby="photo-generator-tab">
+                                    <div class="inner">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="section-title">
+                                                    <h2 class="title">Tạo đề thi Tiếng Anh bằng AI</h2>
+                                                    <div class="features-section">
+                                                        <ul class="list-style--1">
+                                                            <li><i class="fa-regular fa-circle-check"></i>Kết hợp nhiều dạng đề bài</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tùy chỉnh theo năng lực</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tiếp cận nhiều chủ đề</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Cơ chế chấm điểm tự động</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt_md--30 mt_sm--30">
+                                                <div class="export-img">
+                                                    <div class="inner-without-padding">
+                                                        <div class="export-img img-bg-shape" style="text-align: center;">
+                                                            <img src="{% static 'images/generator-img/chat-export-photo.png' %}" alt="Chat example Image">
+                                                            <div class="image-shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="text-generate" role="tabpanel" aria-labelledby="text-generator-tab">
+                                    <div class="inner">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="section-title">
+                                                    <h2 class="title">Tạo đề thi nhận thức về Chuyển Đổi Số</h2>
+                                                    <div class="features-section">
+                                                        <ul class="list-style--1">
+                                                            <li><i class="fa-regular fa-circle-check"></i>Xu thế tất yếu</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Chủ thể trung tâm của chuyển đổi số</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Trau dồi các kỹ năng cần thiết</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>"Kỷ nguyên vươn mình" của dân tộc</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-cds-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt_md--30 mt_sm--30">
+                                                <div class="export-img">
+                                                    <div class="inner-without-padding">
+                                                        <div class="export-img img-bg-shape" style="text-align: center;">
+                                                            <img src="{% static 'images/generator-img/chat-export.png' %}" alt="Chat example Image">
+                                                            <div class="image-shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- 
+                                <div class="tab-pane fade" id="code-generate" role="tabpanel" aria-labelledby="code-generator-tab">
+                                    <div class="inner">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="section-title">
+                                                    <h2 class="title">Code generating AI refers to artificial intelligence.</h2>
+                                                    <div class="features-section">
+                                                        <ul class="list-style--1">
+                                                            <li><i class="fa-regular fa-circle-check"></i>Transformer Models</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Conditional Generative Models</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Pre-trained Models</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Variational Autoencoders</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="#">Start Exploring Now <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt_md--30 mt_sm--30">
+                                                <div class="export-img">
+                                                    <div class="inner-without-padding">
+                                                        <div class="export-img img-bg-shape">
+                                                            <img src="{% static 'images/generator-img/chat-export-code.png' %}" alt="Chat example Image">
+                                                            <div class="image-shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Tab__Style--one Area  -->
+
+
+        <!-- Start Advanced Tab area -->
+        <div class="rainbow-advance-tab-area aiwave-bg-gradient rainbow-section-gap-big">
+            <div class="container">
+                <div class="html-tabs" data-tabs="true">
+                    <div class="row row--30">
+                        <div class="col-lg-12">
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active advance-tab-content-1 right-top" id="home-3" role="tabpanel" aria-labelledby="home-tab-3">
+                                    <div class="rainbow-splite-style">
+                                        <div class="split-wrapper">
+                                            <div class="row g-0 radius-10 align-items-center">
+                                                <div class="col-lg-12 col-xl-5 col-12">
+                                                    <div class="thumbnail">
+                                                        <img class="radius" src="{% static 'images/split/split-1.png' %}" alt="split Images">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-xl-7 col-12">
+                                                    <div class="split-inner">
+                                                        <div class="subtitle">
+                                                            <span class="theme-gradient">EduGenAI hoạt động ra sao?</span>
+                                                        </div>
+                                                        <h2 class="title sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">Kết nối với kho tàng kiến thức của EduGenAI</h2>
+                                                        <p class="description sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">Thiết lập kết nối tới kho tàng kiến thức của EduGenAI, sử dụng AI để tạo đề dựa trên những kiến thức chuyên môn được huấn luyện bởi EduGenAI</p>
+                                                        <div class="view-more-button mt--35 sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="400">
+                                                            <a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-light fa-arrow-right ml--5"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade advance-tab-content-1" id="profile-3" role="tabpanel" aria-labelledby="profile-tab-3">
+                                    <div class="rainbow-splite-style">
+                                        <div class="split-wrapper">
+                                            <div class="row g-0 radius-10 align-items-center">
+                                                <div class="col-lg-12 col-xl-5 col-12">
+                                                    <div class="thumbnail">
+                                                        <img class="radius" src="{% static 'images/split/split-4.png' %}" alt="split Images">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-xl-7 col-12">
+                                                    <div class="split-inner">
+                                                        <div class="subtitle">
+                                                            <span class="theme-gradient">Quy trình thực hiện</span>
+                                                        </div>
+                                                        <h2 class="title sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">Khởi tạo bộ đề</h2>
+                                                        <p class="description sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">SkillUp tiến hành tạo các bộ đề với số câu hỏi và chuyên môn được thiết lập bởi học sinh</p>
+                                                        <div class="view-more-button mt--35 sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="400">
+                                                            <a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-light fa-arrow-right ml--5"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade advance-tab-content-1" id="contact-3" role="tabpanel" aria-labelledby="contact-tab-3">
+                                    <div class="rainbow-splite-style">
+                                        <div class="split-wrapper">
+                                            <div class="row g-0 radius-10 align-items-center">
+                                                <div class="col-lg-12 col-xl-5 col-12">
+                                                    <div class="thumbnail">
+                                                        <img class="radius" src="{% static 'images/split/split-3.png' %}" alt="split Images">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-xl-7 col-12">
+                                                    <div class="split-inner">
+                                                        <div class="subtitle">
+                                                            <span class="theme-gradient">Tính thuận tiện</span>
+                                                        </div>
+                                                        <h2 class="title sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">Tiết kiệm thời gian ôn tập</h2>
+                                                        <p class="description sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">Học sinh có thể ôn tập và làm với nhiều câu hỏi và nhiều lĩnh vực khác nhau, giúp tiết kiệm thời gian và nâng cao hiệu quả học tập.</p>
+                                                        <div class="view-more-button mt--35 sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="400">
+                                                            <a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-light fa-arrow-right ml--5"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade advance-tab-content-1" id="explore-3" role="tabpanel" aria-labelledby="explore-tab-3">
+                                    <div class="rainbow-splite-style">
+                                        <div class="split-wrapper">
+                                            <div class="row g-0 radius-10 align-items-center">
+                                                <div class="col-lg-12 col-xl-5 col-12">
+                                                    <div class="thumbnail">
+                                                        <img class="radius" src="{% static 'images/split/split-5.png' %}" alt="split Images">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 col-xl-7 col-12">
+                                                    <div class="split-inner">
+                                                        <div class="subtitle">
+                                                            <span class="theme-gradient">Kết quả</span>
+                                                        </div>
+                                                        <h2 class="title sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="200">Tự động chấm điểm</h2>
+                                                        <p class="description sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="300">Hệ thống tự động chấm điểm giúp đánh giá nhanh chóng và chính xác kết quả học tập của học sinh.</p>
+                                                        <div class="view-more-button mt--35 sal-animate" data-sal="slide-up" data-sal-duration="400" data-sal-delay="400">
+                                                            <a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-light fa-arrow-right ml--5"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt--60">
+                            <div class="advance-tab-button advance-tab-button-1 right-top">
+                                <ul class="nav nav-tabs tab-button-list" id="myTab-3" role="tablist">
+
+                                    <li class="col-lg-3 nav-item" role="presentation">
+                                        <a href="#" class="nav-link tab-button active" id="home-tab-3" data-bs-toggle="tab" data-bs-target="#home-3" role="tab" aria-controls="home-3" aria-selected="true">
+                                            <div class="tab">
+                                                <div class="count-text">
+                                                    <span class="theme-gradient">01</span>
+                                                </div>
+                                                <h4 class="title">Kết nối </h4>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="col-lg-3 nav-item" role="presentation">
+                                        <a href="#" class="nav-link tab-button" id="profile-tab-3" data-bs-toggle="tab" data-bs-target="#profile-3" role="tab" aria-controls="profile-3" aria-selected="false">
+                                            <div class="tab">
+                                                <div class="count-text">
+                                                    <span class="theme-gradient">02</span>
+                                                </div>
+                                                <h4 class="title">Khởi tạo</h4>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li class="col-lg-3 nav-item" role="presentation">
+                                        <a href="#" class="nav-link tab-button" id="contact-tab-3" data-bs-toggle="tab" data-bs-target="#contact-3" role="tab" aria-controls="contact-3" aria-selected="false">
+                                            <div class="tab">
+                                                <div class="count-text">
+                                                    <span class="theme-gradient">03</span>
+                                                </div>
+                                                <h4 class="title">Tiết kiệm</h4>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="col-lg-3 nav-item" role="presentation">
+                                        <a href="#" class="nav-link tab-button" id="explore-tab-3" data-bs-toggle="tab" data-bs-target="#explore-3" role="tab" aria-controls="explore-3" aria-selected="false">
+                                            <div class="tab">
+                                                <div class="count-text">
+                                                    <span class="theme-gradient">04</span>
+                                                </div>
+                                                <h4 class="title">Kết quả</h4>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-shape">
+                <img src="{% static 'images/bg/split-bg-shape.png' %}" alt="Bg Shape">
+            </div>
+        </div>
+
+
+        <!-- Start Footer Area  -->
+        {% include './partials/footer.html' %}
+        <!-- End Footer Area  -->
+        
+        {% include './partials/progressbar.html' %}
+        
+    </main>
+    <!-- All Scripts  -->
+    
+    <!-- JS -->
+    {% include './partials/scripts.html' %}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('indexPromptForm');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                // Check authentication using a template variable
+                const isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+                if (!isAuthenticated) {
+                    e.preventDefault();
+                    // Optionally show a message or redirect to login
+                    window.location.href = "{% url 'aiwave-signin' %}";
+                    return false;
+                }
+                // If authenticated, allow form to submit as normal (GET to text generator with prompt)
+            });
+        }
+    });
+    </script>
+</body>
+</html>

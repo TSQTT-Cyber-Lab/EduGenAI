@@ -1,0 +1,142 @@
+{% extends 'partials/layout/layout1.html' %}
+{% load static %}
+{% block content %}
+<style>
+    #question-nav-list button {
+        width: 40px;
+        height: 40px;
+        border: 2px solid #3E4059;
+        background-color: #1F2130;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    /* 2. Khi được trả lời -> MÀU XANH */
+    #question-nav-list button.answered {
+        background-color: #28a745;
+        border-color: #28a745;
+        color: white;
+    }
+
+    /* 3. Khi đang được xem -> MÀU TÍM */
+    #question-nav-list button.active {
+        background-color: var(--color-primary);
+        border-color: var(--color-primary);
+    }
+</style>
+
+<div class="rbt-dashboard-content" data-subject="ngu-van">
+    <div class="content-page">
+
+        <div class="chat-box-section">
+            <div class="chat-top-bar">
+                <div class="section-title">
+                    <div class="icon">
+                        <img src="{% static 'images/icons/document-file.png' %}" alt="Ngữ Văn">
+                    </div>
+                    <h6 class="title">Ngữ Văn</h6>
+                </div>
+            </div>
+
+            <div class="chat-box-list" id="chatContainer" style="display: flex; align-items: center; justify-content: center; ">
+    
+                <div class="text-center section-title" style="width: 100%; max-width: 900px;">
+                    
+                    <div id="exam-start-container">
+                        <h3 class="title mt--10">
+                            <span class="theme-gradient">KỲ THI ĐÁNH GIÁ NĂNG LỰC</span>
+                        </h3>
+                        <h3 class="subtitle">ĐỀ THI MẪU MÔN NGỮ VĂN</h3>
+                        <div class="action-btn mt--40">
+                            <button id="start-exam-btn" class="btn-default btn-large">Bắt đầu tạo đề và làm bài</button>
+                        </div>
+                    </div>
+
+                    <div id="exam-body-container" style="display: none;">
+                        
+                        <div class="exam-timer mb-4">
+                            <i class="fa-regular fa-clock"></i>
+                            <span>Thời gian còn lại:</span>
+                            <span id="timer" style="font-weight: bold;">30:00</span>
+                        </div>
+
+                        <div id="question-navigation" class="mb-5">
+                            <h5 class="mb-3">Danh sách câu hỏi</h5>
+                            <div id="question-nav-list" class="d-flex flex-wrap" style="gap: 8px;">
+                                </div>
+                        </div>
+
+                        <div id="question-display" class="text-start">
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="resultModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kết quả bài làm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p style="font-size: 1.2em;">Điểm số của bạn là:</p>
+                <h3 id="score-display" style="font-weight: bold; color: black;"></h3>
+            </div>
+            <div class="modal-footer justify-content-center">
+                <button type="button" class="btn-default btn-border" data-bs-dismiss="modal">Xem lại bài</button>
+                <button type="button" id="restart-exam-btn" class="btn-default bg-solid-primary">Làm lại từ đầu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="validationModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Thông báo</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="validation-message"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// window.BOT_MODE = "text-generator";
+window.userProfilePic = "{% if user.profile.profile_picture %}{{ user.profile.profile_picture.url }}{% else %}{% static 'images/team/team-01sm.jpg' %}{% endif %}";
+window.botImageUrl = `{% if bot_image and bot_image.value %}{% if bot_image.value|slice:':1' == '/' %}{{ bot_image.value }}{% else %}/media/{{ bot_image.value }}{% endif %}{% else %}{% static 'images/team/avater.png' %}{% endif %}`;
+
+    document.addEventListener('DOMContentLoaded', function () {
+        if (window.location.search.includes('prompt=')) {
+            const url = new URL(window.location);
+            url.searchParams.delete('prompt');
+            window.history.replaceState({}, document.title, url.pathname + url.search);
+        }
+
+        // Render initial bot message as HTML (markdown)
+        var botMsg = document.querySelector('.chat-box.ai-speech .chat-content p');
+        if (botMsg && botMsg.textContent.includes('**')) {
+            // Use marked.js if available, otherwise fallback to makeHumanReadable
+            if (window.marked) {
+                botMsg.innerHTML = marked.parse(botMsg.textContent);
+            } else if (typeof makeHumanReadable === 'function') {
+                botMsg.innerHTML = makeHumanReadable(botMsg.textContent);
+            }
+        }
+    });
+</script>
+
+
+
+{% endblock content %}

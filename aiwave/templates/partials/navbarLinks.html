@@ -1,0 +1,58 @@
+{% load static %}
+<div class="rbt-default-sidebar-wrapper">
+    <nav class="mainmenu-nav">
+        
+        <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+            <li><a href="{% url 'aiwave-text-generator' %}"><img src="{% static 'images/generator-icon/text.png' %}" alt="AI Generator"><span>Ngữ Văn</span></a></li>
+            <li><a href=#><img src="{% static 'images/generator-icon/history-book.png' %}" alt="AI Generator"><span>Lịch Sử</span></a></li>
+            <li><a href=#><img src="{% static 'images/generator-icon/eng.png' %}" alt="AI Generator"><span>Tiếng Anh</span></a></li>
+            <li><a href=#><img src="{% static 'images/generator-icon/mathematics.png' %}" alt="AI Generator"><span>Toán Học</span></a></li>
+            <li><a href=#><img src="{% static 'images/generator-icon/atom.png' %}" alt="AI Generator"><span>Vật Lí</span></a></li>
+            <li><a href=#><img src="{% static 'images/generator-icon/laboratory.png' %}" alt="AI Generator"><span>Hóa Học</span></a></li>
+            <li><a href="{% url 'aiwave-cds-generator' %}"><img src="{% static 'images/generator-icon/DX.png' %}" alt="AI Generator"><span>Nhận thức về CĐS</span></a></li>
+        </ul>
+    </nav>
+
+    <!-- <div class="rbt-sm-separator"></div> -->
+
+    <!-- <nav class="mainmenu-nav">
+        <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+            <li class="has-submenu"><a class="collapse-btn collapsed" data-bs-toggle="collapse" href="#collapseExampleMenu" role="button" aria-expanded="false" aria-controls="collapseExampleMenu"><i class="fa-sharp fa-solid fa-circle-plus"></i><span>Điều chỉnh</span></a>
+                <div class="collapse" id="collapseExampleMenu">
+                    <ul class="submenu rbt-default-sidebar-list">
+                        <li class="p-3">
+                            <div class="form-group">
+                                <label for="num-questions-input" class="d-block mb-2">Số Câu</label>
+                                {# Đặt giá trị mặc định là 10 #}
+                                <input type="number" class="num-questions-input form-control" value="10" min="1">
+                            </div>
+                        </li>
+                        <li>
+                            <a href="{% url 'aiwave-plans-billing' %}">
+                                <i class="fa-sharp fa-regular fa-briefcase"></i>
+                                <span>Plans and Billing</span>
+                            </a>
+                        </li>
+                        <li class="p-3">
+                            <div class="form-group">
+                                <label for="difficulty-select" class="d-block mb-2">Độ Khó</label>
+                                <select class="difficulty-select form-select">
+                                    {# Đặt "dễ" là tùy chọn mặc định #}
+                                    <option value="dễ" selected>Dễ</option>
+                                    <option value="trung bình">Trung Bình</option>
+                                    <option value="khó">Khó</option>
+                                </select>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li><a href="{% url 'aiwave-help' %}"><i class="fa-sharp fa-regular fa-award"></i><span>Help & FAQ</span></a></li>
+        </ul>
+        <div class="rbt-sm-separator"></div>
+        <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+            <li><a href="{% url 'aiwave-release-notes' %}"><i class="fa-sharp fa-regular fa-bell"></i><span>Release notes</span></a></li>
+            <li><a href="{% url 'aiwave-terms-policy' %}"><i class="fa-sharp fa-regular fa-briefcase"></i><span>Terms & Policy</span></a></li>
+        </ul>
+    </nav> -->
+</div>

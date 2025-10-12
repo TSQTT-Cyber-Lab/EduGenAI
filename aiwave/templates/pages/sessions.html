@@ -1,0 +1,45 @@
+{% extends 'partials/layout/layout3.html' %}
+{% load static %}
+{% block content %}
+
+<div class="rbt-main-content mb--0">
+    <div class="rbt-daynamic-page-content center-width">
+        <!-- Dashboard Center Content -->
+        <div class="rbt-dashboard-content">
+            {% include 'partials/banner.html' %}
+            <div class="content-page pb--50">
+                <div class="chat-box-list">
+                    <!-- Sessions Management Section -->
+                    <div class="single-settings-box sessions-box overflow-hidden">
+                        <div class="section-title">
+                            <h4 class="title mb--0">Thiết bị đăng nhập</h4>
+                            <p class="description">Quản lý và kết thúc bất kỳ phiên đăng nhập trái phép nào từ tài khoản của bạn.</p>
+                        </div>
+                        <div class="rbt-sm-separator mt-0"></div>
+                        <div class="list-card-grp">
+                            <div class="toolbar d-flex">
+                                <div class="icon"><i class="fa-regular fa-circle-info"></i></div>
+                                <p class="desc">Bạn có thể xem tất cả các thiết bị hiện đang đăng nhập vào tài khoản của mình và quản lý chúng.</p>
+                            </div>
+                            <div id="sessions-list">
+                                <!-- Sessions will be loaded here dynamically -->
+                            </div>
+                            <div class="btn-group mt--20">
+                                <button class="btn-default" id="terminate-all-btn">
+                                    <i class="fa-sharp fa-regular fa-log-out"></i> Đăng xuất tất cả các thiết bị khác
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+  window.BROWSER_ICON_PATH = "{% static 'images/sign-up/' %}";
+</script>
+
+{% endblock content %}
+
