@@ -125,9 +125,21 @@ def emailGenerator(request):
 
 def codeGenerator(request):
     return handle_generator_request(request, 'code-generator', 'tools/codeGenerator.html', 'Code Generator')
+
 # Sau này bổ sung thêm các chức năng khác @2025
+
 def cdsGenerator(request):
     return handle_generator_request(request, 'cds-generator', 'tools/cdsGenerator.html', 'CDS Generator')
+
+
+def engGenerator(request):
+    return handle_generator_request(request, 'eng-generator', 'tools/engGenerator.html', 'English Generator')
+
+def hisGenerator(request):
+    return handle_generator_request(request, 'his-generator', 'tools/hisGenerator.html', 'History Generator')
+
+def mathGenerator(request):
+    return handle_generator_request(request, 'math-generator', 'tools/mathGenerator.html', 'Mathematics Generator')
 
 @login_required
 def generate_exam_api(request, subject):

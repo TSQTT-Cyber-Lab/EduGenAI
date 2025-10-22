@@ -95,7 +95,7 @@ def profile(request):
     return render(request, 'pages/profileDetails.html', {
         'title': 'View Profile',
         'subtitle': 'View Profile',
-        'script': 'js\custom\pages\customProfileDetails.js',
+        'script': 'js\\custom\\pages\\customProfileDetails.js',
         'profile': profile,
         'user': request.user,
     })
@@ -234,7 +234,7 @@ def sessionsPage(request):
     return render(request, 'pages/sessions.html', {
         'title': 'Active Sessions',
         'subtitle': 'Manage your active sessions',
-        'script': 'js\custom\pages\customSessions.js',
+        'script': 'js\\custom\\pages\\customSessions.js',
     })
 
 @login_required
@@ -350,6 +350,8 @@ def exam_page(request, subject):
         'ngu-van': 'Ngữ Văn',
         'lich-su': 'Lịch Sử',
         'tieng-anh': 'Tiếng Anh',
+        'toan-hoc': 'Ngữ Văn',
+        'cds': 'Chuyển Đổi Số',
     }
     context = {
         'subject': subject,

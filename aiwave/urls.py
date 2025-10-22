@@ -14,7 +14,10 @@ urlpatterns = [
     path('api/generate-exam/<str:subject>/', tools.generate_exam_api, name='api_generate_exam'),
 # Bổ sung các môn khác vào đây @2025
     path('text-generator/', tools.textGenerator, name='aiwave-text-generator'),
+    path('eng-generator/', tools.engGenerator, name='aiwave-eng-generator'),
     path('cds-generator/', tools.cdsGenerator, name='aiwave-cds-generator'),
+    path('his-generator/', tools.hisGenerator, name='aiwave-his-generator'),
+    path('math-generator/', tools.mathGenerator, name='aiwave-math-generator'),
     path('code-generator/', tools.codeGenerator, name='aiwave-code-generator'),
     path('email-generator/', tools.emailGenerator, name='aiwave-email-generator'),
     path('blog-generator/', tools.blogGenerator, name='aiwave-blog-generator'), 

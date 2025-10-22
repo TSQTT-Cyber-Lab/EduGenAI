@@ -104,8 +104,9 @@
                                     <span class="cd-headline rotate-1">
                                         <span class="cd-words-wrapper" style="width: 400px;">
                                             <b class="theme-gradient is-visible">Ngữ Văn</b>
-                                            <b class="theme-gradient is-hidden">Tiếng Anh</b>
                                             <b class="theme-gradient is-hidden">Lịch Sử</b>
+                                            <b class="theme-gradient is-hidden">Tiếng Anh</b>
+                                            <b class="theme-gradient is-hidden">Toán Học</b>
                                             <b class="theme-gradient is-hidden">Nhận thức</b>
                                         </span>
                                 </span>
@@ -169,12 +170,12 @@
                                 <li class="nav-item tabs__tab" role="presentation">
                                     <button class="nav-link rainbow-gradient-btn without-shape-circle" id="photo-generator-tab" data-bs-toggle="tab" data-bs-target="#photo-generate" type="button" role="tab" aria-controls="photo-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/photo-g.png' %}" alt="Video Generator Icon">Anh Văn</span><span class="border-bottom-style"></span></button>
                                 </li>
-                                 <li class="nav-item tabs__tab" role="presentation">
+                                <li class="nav-item tabs__tab " role="presentation">
+                                    <button class="nav-link rainbow-gradient-btn without-shape-circle" id="code-generator-tab" data-bs-toggle="tab" data-bs-target="#code-generate" type="button" role="tab" aria-controls="code-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/code-g.png' %}" alt="Video Generator Icon">Toán Học</span><span class="border-bottom-style"></span></button>
+                                </li>
+                                <li class="nav-item tabs__tab" role="presentation">
                                     <button class="nav-link rainbow-gradient-btn without-shape-circle" id="text-generator-tab" data-bs-toggle="tab" data-bs-target="#text-generate" type="button" role="tab" aria-controls="text-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/text-g.png' %}" alt="Video Generator Icon">Nhận thức</span><span class="border-bottom-style"></span></button>
                                 </li>
-                                <!--<li class="nav-item tabs__tab " role="presentation">
-                                    <button class="nav-link rainbow-gradient-btn without-shape-circle" id="code-generator-tab" data-bs-toggle="tab" data-bs-target="#code-generate" type="button" role="tab" aria-controls="code-generate" aria-selected="false"><span class="generator-icon"><img src="{% static 'images/icons/code-g.png' %}" alt="Video Generator Icon">Code Generator</span><span class="border-bottom-style"></span></button>
-                                </li> -->
                             </ul>
 
                             <div class="rainbow-tab-content tab-content">
@@ -199,7 +200,7 @@
                                                 <div class="export-img">
                                                     <div class="inner-without-padding">
                                                         <div class="export-img img-bg-shape" style="text-align: center;">
-                                                            <img src="{% static 'images/generator-img/chat-export-vedio.png' %}" alt="Chat example Image">
+                                                            <img src="{% static 'images/generator-img/literature.png' %}" alt="Chat example Image">
                                                             <div class="image-shape"></div>
                                                         </div>
                                                     </div>
@@ -223,14 +224,14 @@
                                                             <li><i class="fa-regular fa-circle-check"></i>Cơ chế chấm điểm tự động</li>
                                                         </ul>
                                                     </div>
-                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-his-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 mt_md--30 mt_sm--30">
                                                 <div class="export-img">
                                                     <div class="inner-without-padding">
                                                         <div class="export-img img-bg-shape" style="text-align: center;">
-                                                            <img src="{% static 'images/generator-img/chat-export-audio.png' %}" alt="Chat example Image">
+                                                            <img src="{% static 'images/generator-img/history.png' %}" alt="Chat example Image">
                                                             <div class="image-shape"></div>
                                                         </div>
                                                     </div>
@@ -254,14 +255,45 @@
                                                             <li><i class="fa-regular fa-circle-check"></i>Cơ chế chấm điểm tự động</li>
                                                         </ul>
                                                     </div>
-                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-text-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-eng-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
                                                 </div>
                                             </div>
                                             <div class="col-xl-6 mt_md--30 mt_sm--30">
                                                 <div class="export-img">
                                                     <div class="inner-without-padding">
                                                         <div class="export-img img-bg-shape" style="text-align: center;">
-                                                            <img src="{% static 'images/generator-img/chat-export-photo.png' %}" alt="Chat example Image">
+                                                            <img src="{% static 'images/generator-img/english.png' %}" alt="Chat example Image">
+                                                            <div class="image-shape"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="tab-pane fade" id="code-generate" role="tabpanel" aria-labelledby="code-generator-tab">
+                                    <div class="inner">
+                                        <div class="row">
+                                            <div class="col-xl-6">
+                                                <div class="section-title">
+                                                    <h2 class="title">Tạo đề thi Toán Học bằng AI</h2>
+                                                    <div class="features-section">
+                                                        <ul class="list-style--1">
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tự chủ và tự học, giải quyết vấn đề</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Sáng tạo năng lực toán học</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Tư duy logic và lập luận toán học</li>
+                                                            <li><i class="fa-regular fa-circle-check"></i>Cơ chế chấm điểm tự động</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="read-more"><a class="btn-default color-blacked" href="{% url 'aiwave-math-generator' %}">Bắt đầu ngay <i class="fa-sharp fa-solid fa-arrow-right"></i></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-6 mt_md--30 mt_sm--30">
+                                                <div class="export-img">
+                                                    <div class="inner-without-padding">
+                                                        <div class="export-img img-bg-shape" style="text-align: center;">
+                                                            <img src="{% static 'images/generator-img/mathematics.png' %}" alt="Chat example Image">
                                                             <div class="image-shape"></div>
                                                         </div>
                                                     </div>
@@ -292,7 +324,7 @@
                                                 <div class="export-img">
                                                     <div class="inner-without-padding">
                                                         <div class="export-img img-bg-shape" style="text-align: center;">
-                                                            <img src="{% static 'images/generator-img/chat-export.png' %}" alt="Chat example Image">
+                                                            <img src="{% static 'images/generator-img/cds.png' %}" alt="Chat example Image">
                                                             <div class="image-shape"></div>
                                                         </div>
                                                     </div>

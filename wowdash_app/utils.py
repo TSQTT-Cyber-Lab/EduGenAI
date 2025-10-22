@@ -6,15 +6,16 @@ from django.conf import settings  # Import the settings module
 from django.core.exceptions import PermissionDenied
 import google.api_core.exceptions
 from django.shortcuts import redirect
-
+# @2025 change Model to Gemini=2.5-pro
 # Check for Gemini API key at startup
 # GEMINI_API_KEY = get("GEMINI_API_KEY")
-GEMINI_API_KEY = "AIzaSyAPDbPUWyYXJeZmWtEyi6HjV3KUT1TkwfQ"
+GEMINI_API_KEY = "AIzaSyAIfiYO0haLlEF69kBi5pX-Y4KwQ3Il-6Y"
+#GEMINI_API_KEY = "AIzaSyAPDbPUWyYXJeZmWtEyi6HjV3KUT1TkwfQ"
 GEMINI_KEY_MISSING = not GEMINI_API_KEY
 if not GEMINI_KEY_MISSING:
     genai.configure(api_key=GEMINI_API_KEY)
     # Create a global client and chat instance
-    model_name = "gemini-2.5-flash"  # or gemini-1.5-pro / 2.0 when available
+    model_name = "gemini-2.5-pro"  # or gemini-1.5-pro / 2.0 when available
     model = genai.GenerativeModel(model_name)
     chat_session = model.start_chat()
 else:

@@ -49,6 +49,7 @@ div {
         }
         &.color-blacked{
             color: var(--color-black);
+            line-height: 50px;
             &:hover,
             &.active{
                 color: var(--color-black);
@@ -163,7 +164,8 @@ div {
             height: 60px;
             line-height: 60px;
             padding: 0 37px;
-            font-size: 17px;
+            font-family: sans-serif;
+            font-size: 18px;
             @media #{$sm-layout} {
                 padding: 0 25px;
                 height: 50px;

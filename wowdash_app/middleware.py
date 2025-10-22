@@ -11,12 +11,15 @@ class AuthAndRoleRequiredMiddleware:
     """
     def __init__(self, get_response):
         self.get_response = get_response
-
+#@2025
     def __call__(self, request):
         # List of exact paths that require authentication
         exact_protected_paths = [
             reverse('aiwave-text-generator'),
+            reverse('aiwave-eng-generator'),
             reverse('aiwave-cds-generator'),
+            reverse('aiwave-his-generator'),
+            reverse('aiwave-math-generator'),
             reverse('aiwave-code-generator'),
             reverse('aiwave-email-generator'),
             reverse('aiwave-blog-generator'),

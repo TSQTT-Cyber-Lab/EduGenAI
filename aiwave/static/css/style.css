@@ -11020,7 +11020,7 @@ xclip
   font-weight: 600;
   letter-spacing: 0.5px;
   line-height: 18px;
-  font-size: 16px;
+  font-size: 20px;
   border-radius: 4px;
   margin-bottom: 12px;
   display: inline-block;
@@ -11122,6 +11122,7 @@ a.btn-default.color-blacked,
 button.btn-default.color-blacked,
 div.btn-default.color-blacked {
   color: var(--color-black);
+  line-height: 50px;
 }
 a.btn-default.color-blacked:hover, a.btn-default.color-blacked.active,
 button.btn-default.color-blacked:hover,

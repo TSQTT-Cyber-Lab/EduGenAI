@@ -28,12 +28,12 @@
                                     {% endif %}
                                     <div class="social-btn-grp">
                                         <a class="btn-default btn-border"
-                                            href="{% provider_login_url 'google' %}?next=/">
+                                            href="#">
                                             <span class="icon-left"><img src="{% static 'images/sign-up/google.png' %}"
                                                     alt="Google Icon"></span>Đăng nhập với Google
                                         </a>
                                         <a class="btn-default btn-border"
-                                            href="{% url 'social:begin' 'facebook' %}?next=/">
+                                            href="#">
                                             <span class="icon-left"><img
                                                     src="{% static 'images/sign-up/facebook.png' %}"
                                                     alt="Google Icon"></span>Đăng nhập với Facebook
@@ -86,7 +86,7 @@
                 </div>
             </div>
             <a class="close-button" href="{% url 'aiwave-index' %}">
-                <i class="fa-sharp fa-regular fa-x"></i>
+                <i class="fa-sharp fa-regular fa-home"></i>
             </a>
         </div>
         <!-- End Sign up Area  -->
